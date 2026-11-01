@@ -61,3 +61,10 @@ En **Ajustes** puedes cambiar:
 ## Depuración
 - Service worker: `chrome://extensions` → Audio Grabber → **service worker** (Inspect).
 - Offscreen (conversión): en la misma página aparece `offscreen.html` mientras hay un trabajo activo; ahí salen los logs de ffmpeg (nivel *Verbose*).
+
+## Licencia
+Audio Grabber es software libre y de código abierto, bajo la **GNU General Public License v3.0** (ver [`LICENSE`](LICENSE)).
+
+Puedes usarlo, estudiarlo, modificarlo y redistribuirlo. Si distribuyes una versión modificada, tiene que seguir bajo GPL-3.0 y con su código fuente disponible.
+
+Las librerías de `vendor/` conservan sus licencias: @ffmpeg/ffmpeg (MIT) y @ffmpeg/core (GPL-2.0-or-later), ambas compatibles con GPL-3.0. Ver [`vendor/LICENSES.md`](vendor/LICENSES.md).
