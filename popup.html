@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Audio Grabber</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img class="logo" src="icons/icon-32.png" alt="" width="28" height="28">
+    <div class="brand">
+      <h1>Audio Grabber</h1>
+      <p id="subtitle">Buscando medios…</p>
+    </div>
+    <button id="btn-clear" class="icon-btn" title="Vaciar lista" aria-label="Vaciar lista">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg>
+    </button>
+    <button id="btn-settings" class="icon-btn" title="Ajustes" aria-label="Ajustes" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
+  </header>
+
+  <section id="settings" class="settings" hidden>
+    <label>Calidad MP3 por defecto
+      <select id="set-bitrate">
+        <option value="128">128 kbps</option>
+        <option value="192">192 kbps</option>
+        <option value="256">256 kbps</option>
+        <option value="320">320 kbps</option>
+      </select>
+    </label>
+    <label>Ignorar archivos menores de
+      <select id="set-minsize">
+        <option value="0">sin límite</option>
+        <option value="50">50 KB</option>
+        <option value="100">100 KB</option>
+        <option value="500">500 KB</option>
+        <option value="1024">1 MB</option>
+      </select>
+    </label>
+    <label class="switch">
+      <input type="checkbox" id="set-saveas">
+      <span class="track"><span class="thumb"></span></span>
+      Preguntar dónde guardar
+    </label>
+  </section>
+
+  <main id="list"></main>
+
+  <section id="empty" class="empty" hidden>
+    <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <h2>Nada por aquí todavía</h2>
+    <ol>
+      <li>Dale <b>play</b> al audio o video de la página.</li>
+      <li>El icono mostrará cuántos medios encontró.</li>
+      <li>Vuelve a abrir este panel y elige cómo lo quieres.</li>
+    </ol>
+  </section>
+
+  <footer id="footer" class="footer" hidden>
+    <button id="btn-all" class="btn-ghost-wide">
+      <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+      <span id="btn-all-label">Descargar todo en MP3</span>
+    </button>
+  </footer>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <template id="tpl-card">
+    <article class="card">
+      <div class="head">
+        <div class="kind"></div>
+        <div class="info">
+          <div class="name"></div>
+          <div class="chips"></div>
+        </div>
+      </div>
+      <div class="formats" role="radiogroup" aria-label="Formato"></div>
+      <div class="options"></div>
+      <button class="btn-go">
+        <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+        <span class="go-label">Descargar</span>
+      </button>
+      <div class="jobs"></div>
+    </article>
+  </template>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
